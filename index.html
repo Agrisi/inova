@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LawPortal - Consultoria Jurídica para Startups</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #3D436D;
+      color: #BEA259;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      background-color: #162944;
+      border-radius: 10px;
+    }
+
+    h1 {
+      color: #D2BA78;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #BEA259;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #BEA259;
+      background-color: #162944;
+      color: #BEA259;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin-top: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #D2BA78;
+      color: #3D436D;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>LawPortal</h1>
+    <p>Consultoria Jurídica para Startups</p>
+
+    <form onsubmit="return validarFormulario()">
+      <div class="form-group">
+        <label for="nome">Nome da Empresa/Startup:</label>
+        <input type="text" id="nome" name="nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="motivo">Motivo da Consulta:</label>
+        <textarea id="motivo" name="motivo" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="objetivos">Objetivos da Startup:</label>
+        <textarea id="objetivos" name="objetivos" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="arquivos">Enviar Arquivos (Fotos/Vídeos):</label>
+        <input type="file" id="arquivos" name="arquivos" multiple>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Enviar">
+      </div>
+    </form>
+
+    <div id="agradecimento" class="hidden">
+      <h2>Obrigado pelo envio!</h2>
+      <p>Iremos revisar os dados da sua empresa em breve.</p>
+    </div>
+  </div>
+
+  <script>
+    function validarFormulario() {
+      var nome = document.getElementById("nome").value;
+      var motivo = document.getElementById("motivo").value;
+      var objetivos = document.getElementById("objetivos").value;
+
+      if (nome === "" || motivo === "" || objetivos === "") {
+        alert("Por favor, preencha todos os campos.");
+        return false;
+      }
+
+      exibirAgradecimento();
+      return false;
+    }
+
+    function exibirAgradecimento() {
+      document.getElementById("agradecimento").classList.remove("hidden");
+      document.querySelector("form").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
+
